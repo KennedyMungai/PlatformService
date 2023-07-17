@@ -22,6 +22,8 @@ public static class PrepDb
                 new Platform() { Name = "MySql", Publisher = "Oracle", Cost = "Free" },
                 new Platform() { Name = "Linux", Publisher = "Linux Foundation", Cost = "Free" }
             );
+
+            context.SaveChanges();
         }
         else
         {
