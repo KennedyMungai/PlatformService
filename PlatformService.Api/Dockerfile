@@ -7,3 +7,12 @@ COPY *.csproj .
 COPY . .
 
 RUN dotnet public -c Release -o out
+
+
+FROM mcr.microsoft.com/dotnet/aspnet
+
+WORKDIR /app
+
+COPY --from=build /app/out .
+
+ENTRYPOINT [ "dotnet", "PlatformService.Api.dll" ]
