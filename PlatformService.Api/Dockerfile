@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY *.csproj .
 
+RUN dotnet restore
+
 COPY . .
 
 RUN dotnet public -c Release -o out
