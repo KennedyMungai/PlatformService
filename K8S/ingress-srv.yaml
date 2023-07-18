@@ -22,4 +22,5 @@ spec:
             backend:
               service:
                 name: command-clusterip-srv
-                port: 80
+                port:
+                  number: 80
