@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformService.Api", "PlatformService.Api\PlatformService.Api.csproj", "{9F7D5F75-6999-4BC5-AD10-D5AD58ACB3F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsService.Api", "CommandsService.Api\CommandsService.Api.csproj", "{6F177991-5AE3-4E00-85A8-5FBC9EEEA2B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{9F7D5F75-6999-4BC5-AD10-D5AD58ACB3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F7D5F75-6999-4BC5-AD10-D5AD58ACB3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F7D5F75-6999-4BC5-AD10-D5AD58ACB3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F177991-5AE3-4E00-85A8-5FBC9EEEA2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F177991-5AE3-4E00-85A8-5FBC9EEEA2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F177991-5AE3-4E00-85A8-5FBC9EEEA2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F177991-5AE3-4E00-85A8-5FBC9EEEA2B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
