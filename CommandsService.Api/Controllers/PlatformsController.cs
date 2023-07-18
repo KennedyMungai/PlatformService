@@ -15,5 +15,7 @@ public class PlatformsController : ControllerBase
     public ActionResult TestInboundConnection()
     {
         Console.WriteLine("--> Inbound Post # Command Service");
+
+        return Ok();
     }
 }
