@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: command-depl
+  name: commands-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: commandService
+      app: commandservice
   template:
     metadata:
       labels:
-        app: commandService
+        app: commandservice
     spec:
       containers:
-        - name: commandService
+        - name: commandservice
           image: kennedymungai/commandservice_api
 --- 
 apiVersion: v1
@@ -23,9 +23,9 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: commandService
+    app: commandservice
   ports:
-    - name: commandService
+    - name: commandservice
       protocol: TCP
       port: 80
       targetPort: 80
