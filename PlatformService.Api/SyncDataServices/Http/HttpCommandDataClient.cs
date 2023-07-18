@@ -23,7 +23,7 @@ public class HttpCommandDataClient : ICommandDataClient
             "application/json"
         );
 
-        var response = await _httpClient.PostAsync("http://localhost:5100/api/commands/platforms", httpContent);
+        var response = await _httpClient.PostAsync($"{_configuration["CommandService"]}/api/commands/platforms", httpContent);
 
         if (response.IsSuccessStatusCode)
         {
