@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlatformService.Api.Data;
 using PlatformService.Api.Dtos;
 using PlatformService.Api.Models;
+using PlatformService.Api.SyncDataServices.Http;
 
 namespace PlatformService.Api.Controllers;
 
@@ -12,11 +13,13 @@ public class PlatformsController : ControllerBase
 {
     private readonly IPlatformRepo _repository;
     private readonly IMapper _mapper;
+    private readonly ICommandDataClient _commandDataClient;
 
-    public PlatformsController(IPlatformRepo repository, IMapper mapper)
+    public PlatformsController(IPlatformRepo repository, IMapper mapper, ICommandDataClient commandDataClient)
     {
         _repository = repository;
         _mapper = mapper;
+        _commandDataClient = commandDataClient;
     }
 
     [HttpGet(Name = "Get All PLatforms")]
