@@ -15,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDataba
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
 
+Console.WriteLine($" ---> Command Service Endpoint {builder.Configuration["CommandService"]}");
 
 var app = builder.Build();
 
