@@ -47,11 +47,20 @@ public class PlatformsController : ControllerBase
 
     [HttpPost(Name = "Create New Platform")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public ActionResult<PlatformReadDto> CreatePlatform(PlatformCreateDto platformCreateDto)
+    public async Task<ActionResult<PlatformReadDto>> CreatePlatformAsync(PlatformCreateDto platformCreateDto)
     {
         var platformItem = _mapper.Map<Platform>(platformCreateDto);
         _repository.CreatePlatform(platformItem);
         _repository.SaveChanges();
+
+        try
+        {
+            await _commandDataClient.SendPlatformToCommand(_mapper.Map<PlatformReadDto>(platformItem));
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Could not send synchronously: {ex.Message}");
+        }
 
         return CreatedAtRoute(nameof(GetPlatformById), new { id = platformItem.Id }, _mapper.Map<PlatformReadDto>(platformItem));
     }
