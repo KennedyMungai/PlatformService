@@ -8,10 +8,12 @@ namespace PlatformService.Api.SyncDataServices.Http;
 public class HttpCommandDataClient : ICommandDataClient
 {
     private readonly HttpClient _httpClient;
+    private readonly IConfiguration _configuration;
 
-    public HttpCommandDataClient(HttpClient httpClient)
+    public HttpCommandDataClient(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
+        _configuration = configuration;
     }
     public async Task SendPlatformToCommand(PlatformReadDto plat)
     {
