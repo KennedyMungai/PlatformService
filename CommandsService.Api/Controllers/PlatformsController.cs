@@ -16,6 +16,6 @@ public class PlatformsController : ControllerBase
     {
         Console.WriteLine("--> Inbound Post # Command Service");
 
-        return Ok();
+        return Ok("Inbound Post # Command Service");
     }
 }
