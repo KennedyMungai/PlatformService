@@ -14,7 +14,13 @@ public class CommandRepo : ICommandRepo
 
     public void CreateCommand(int platformId, Command command)
     {
-        throw new NotImplementedException();
+        if (command is null)
+        {
+            throw new ArgumentNullException(nameof(command));
+        }
+
+        command.PlatformId = platformId;
+        _context.Commands.Add(command);
     }
 
     public void CreatePlatform(Platform platform)
