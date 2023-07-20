@@ -7,4 +7,5 @@ public class Command
     public string HowTo { get; set; } = string.Empty;
     public string CommandLine { get; set; } = string.Empty;
     public int PlatformId { get; set; }
+    public Platform? Platform { get; set; }
 }
