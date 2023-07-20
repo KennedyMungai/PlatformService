@@ -13,12 +13,13 @@ spec:
         app: mysql
     spec:
       containers:
-        - name: mysql
-          image: mysql:latest
+        - image: mysql:8.0.33
+          name: mysql
           ports:
             - containerPort: 3306
+              name: mysql
           env:
-            - name: SA_PASSWORD 
+            - name: MYSQL_PID 
               valueFrom:
                 secretKeyRef:
                   - name: mysql
@@ -27,7 +28,7 @@ spec:
             - mountPath: /var/lib/mysql
               name: mysql-persistent-storage
       volumes:
-        - name: mysqldb
+        - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: mysql-claim
 ---
