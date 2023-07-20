@@ -29,7 +29,9 @@ public class CommandRepo : ICommandRepo
 
     public Command GetCommand(int platformId, int commandId)
     {
-        throw new NotImplementedException();
+        return _context.Commands
+                    .Where(c => c.PlatformId == platformId && c.Id == commandId)
+                    .FirstOrDefault();
     }
 
     public IEnumerable<Command> GetCommandsForPlatform(int platformId)
