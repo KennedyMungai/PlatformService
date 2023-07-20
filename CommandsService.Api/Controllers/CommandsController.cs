@@ -8,12 +8,12 @@ namespace CommandsService.Api.Controllers;
 [Route("api/commands/[controller]")]
 public class CommandsController : ControllerBase
 {
-    private readonly ICommandRepo _commandRepo;
+    private readonly ICommandRepo _repository;
     private readonly IMapper _mapper;
 
-    public CommandsController(ICommandRepo commandRepo, IMapper mapper)
+    public CommandsController(ICommandRepo repository, IMapper mapper)
     {
-        _commandRepo = commandRepo;
+        _repository = repository;
         _mapper = mapper;
     }
 
