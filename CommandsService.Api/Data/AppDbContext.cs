@@ -13,4 +13,19 @@ public class AppDbContext : DbContext
 
     public DbSet<Command> Commands { get; set; }
     public DbSet<Platform> Platforms { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder
+            .Entity<Platform>()
+            .HasMany(p => p.Commands)
+            .WithOne(c => c.Platform)
+            .HasForeignKey(c => c.PlatformId);
+
+        modelBuilder
+            .Entity<Command>()
+            .HasOne(p => p.Platform)
+            .WithMany(c => c.Commands)
+            .HasForeignKey(p => p.PlatformId);
+    }
 }
