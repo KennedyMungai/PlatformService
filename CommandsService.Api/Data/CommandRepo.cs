@@ -34,7 +34,9 @@ public class CommandRepo : ICommandRepo
 
     public IEnumerable<Command> GetCommandsForPlatform(int platformId)
     {
-        throw new NotImplementedException();
+        return _context.Commands
+                    .Where(c => c.PlatformId == platformId)
+                    .OrderBy(c => c.Platform.Name);
     }
 
     public bool PlatformExists(int platformId)
