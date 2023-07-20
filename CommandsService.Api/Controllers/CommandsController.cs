@@ -41,6 +41,11 @@ public class CommandsController : ControllerBase
 
         var command = _repository.GetCommand(platformId, commandId);
 
+        if (command == null)
+        {
+            return NotFound();
+        }
+
         return Ok(_mapper.Map<CommandReadDto>(command));
     }
 }
