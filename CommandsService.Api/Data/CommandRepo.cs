@@ -39,7 +39,7 @@ public class CommandRepo : ICommandRepo
 
     public bool PlatformExists(int platformId)
     {
-        throw new NotImplementedException();
+        return (_context.Platforms.Any(p => p.Id == platformId));
     }
 
     public bool SaveChanges()
