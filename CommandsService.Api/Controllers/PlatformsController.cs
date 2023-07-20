@@ -1,5 +1,6 @@
 using AutoMapper;
 using CommandsService.Api.Data;
+using CommandsService.Api.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommandsService.Api.Controllers;
@@ -15,6 +16,13 @@ public class PlatformsController : ControllerBase
     {
         _mapper = mapper;
         _repository = repository;
+    }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
+    {
+        var platforms = _repository.GetAllPlatforms();
+        return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platforms));
     }
 
     [HttpPost]
