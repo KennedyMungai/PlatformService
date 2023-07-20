@@ -1,3 +1,5 @@
+using AutoMapper;
+using CommandsService.Api.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommandsService.Api.Controllers;
@@ -6,9 +8,13 @@ namespace CommandsService.Api.Controllers;
 [Route("api/commands/[controller]")]
 public class PlatformsController : ControllerBase
 {
-    public PlatformsController()
-    {
+    private readonly IMapper _mapper;
+    private readonly ICommandRepo _repository;
 
+    public PlatformsController(IMapper mapper, ICommandRepo repository)
+    {
+        _mapper = mapper;
+        _repository = repository;
     }
 
     [HttpPost]
