@@ -1,5 +1,6 @@
 using AutoMapper;
 using CommandsService.Api.Data;
+using CommandsService.Api.Models;
 using CommandsService.Api.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,5 +48,25 @@ public class CommandsController : ControllerBase
         }
 
         return Ok(_mapper.Map<CommandReadDto>(command));
+    }
+
+    [HttpPost]
+    public ActionResult<CommandReadDto> CreateCommandForPlatform(int platformId, CommandCreateDto commandCreateDto)
+    {
+        if (commandCreateDto == null)
+        {
+            return BadRequest();
+        }
+
+        if (!_repository.PlatformExists(platformId))
+        {
+            return NotFound();
+        }
+
+        var command = _mapper.Map<Command>(commandCreateDto);
+
+        _repository.CreateCommand(platformId, command);
+
+        return CreatedAtAction(nameof(GetCommandForPlatform), new { platformId, commandId = command.Id }, _mapper.Map<CommandReadDto>(command));
     }
 }
