@@ -19,7 +19,12 @@ public class CommandRepo : ICommandRepo
 
     public void CreatePlatform(Platform platform)
     {
-        throw new NotImplementedException();
+        if (platform is null)
+        {
+            throw new ArgumentNullException(nameof(platform));
+        }
+
+        _context.Platforms.Add(platform);
     }
 
     public IEnumerable<Platform> GetAllPlatforms()
