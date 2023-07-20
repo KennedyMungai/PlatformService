@@ -24,7 +24,7 @@ public class CommandRepo : ICommandRepo
 
     public IEnumerable<Platform> GetAllPlatforms()
     {
-        throw new NotImplementedException();
+        return _context.Platforms.ToList();
     }
 
     public Command GetCommand(int platformId, int commandId)
