@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CommandsService.Api.Controllers;
 
 [ApiController]
-[Route("api/commands/[controller]")]
+[Route("api/platforms/{platformId}/[controller]")]
 public class CommandsController : ControllerBase
 {
     private readonly ICommandRepo _repository;

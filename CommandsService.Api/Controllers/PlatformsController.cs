@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CommandsService.Api.Controllers;
 
 [ApiController]
-[Route("api/platforms/[controller]")]
+[Route("api/commands/[controller]")]
 public class PlatformsController : ControllerBase
 {
     private readonly IMapper _mapper;
