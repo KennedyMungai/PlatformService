@@ -72,6 +72,23 @@ public class PlatformsController : ControllerBase
             Console.WriteLine($"Could not send synchronously: {ex.Message}");
         }
 
-        return CreatedAtRoute(nameof(GetPlatformById), new { id = platformItem.Id }, platformReadDto);
+        // Send Async Message
+        try
+        {
+            var platformPublishedDto = _mapper.Map<PlatformPublishedDto>(platformReadDto);
+            platformPublishedDto.Event = "Platform_Published";
+
+            _messageBusClient.PublishNewPlatform(platformPublishedDto);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Could not send asynchronously: {ex.Message}");
+        }
+
+        return CreatedAtRoute(
+            nameof(GetPlatformById),
+            new { id = platformItem.Id },
+            platformReadDto
+        );
     }
 }
