@@ -15,6 +15,7 @@ public class MessageBusSubscriber : BackgroundService
     {
         _configuration = configuration;
         _eventProcessor = eventProcessor;
+        InitializeRabbitMQ();
     }
 
     private void InitializeRabbitMQ()
