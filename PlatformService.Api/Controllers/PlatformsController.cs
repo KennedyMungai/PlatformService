@@ -17,7 +17,12 @@ public class PlatformsController : ControllerBase
     private readonly ICommandDataClient _commandDataClient;
     private readonly IMessageBusClient _messageBusClient;
 
-    public PlatformsController(IPlatformRepo repository, IMapper mapper, ICommandDataClient commandDataClient, IMessageBusClient messageBusClient)
+    public PlatformsController(
+        IPlatformRepo repository,
+        IMapper mapper,
+        ICommandDataClient commandDataClient,
+        IMessageBusClient messageBusClient
+        )
     {
         _repository = repository;
         _mapper = mapper;
