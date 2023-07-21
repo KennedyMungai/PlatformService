@@ -44,4 +44,9 @@ if (app.Environment.IsProduction())
 
 app.MapGrpcService<GrpcPlatformService>();
 
+app.MapGet("/protos/platforms.proto", async context =>
+{
+    await context.Response.WriteAsync(File.ReadAllText("protos/platforms.proto"));
+});
+
 app.Run();
