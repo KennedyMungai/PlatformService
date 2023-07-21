@@ -61,15 +61,17 @@ public class PlatformsController : ControllerBase
         _repository.CreatePlatform(platformItem);
         _repository.SaveChanges();
 
+        var platformReadDto = _mapper.Map<PlatformReadDto>(platformItem);
+
         try
         {
-            await _commandDataClient.SendPlatformToCommand(_mapper.Map<PlatformReadDto>(platformItem));
+            await _commandDataClient.SendPlatformToCommand(platformReadDto);
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Could not send synchronously: {ex.Message}");
         }
 
-        return CreatedAtRoute(nameof(GetPlatformById), new { id = platformItem.Id }, _mapper.Map<PlatformReadDto>(platformItem));
+        return CreatedAtRoute(nameof(GetPlatformById), new { id = platformItem.Id }, platformReadDto);
     }
 }
