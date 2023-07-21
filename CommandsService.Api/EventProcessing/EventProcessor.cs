@@ -26,6 +26,7 @@ public class EventProcessor : IEventProcessor
         {
             case EventType.PlatformPublished:
                 // TODO Add the platform to the database
+                addPlatform(message);
                 break;
             default:
                 break;
