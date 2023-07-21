@@ -33,6 +33,11 @@ public class CommandRepo : ICommandRepo
         _context.Platforms.Add(platform);
     }
 
+    public bool ExternalPlatformExists(int externalPlatformId)
+    {
+        return _context.Platforms.Any(p => p.ExternalId == externalPlatformId);
+    }
+
     public IEnumerable<Platform> GetAllPlatforms()
     {
         return _context.Platforms.ToList();
@@ -54,7 +59,7 @@ public class CommandRepo : ICommandRepo
 
     public bool PlatformExists(int platformId)
     {
-        return (_context.Platforms.Any(p => p.Id == platformId));
+        return _context.Platforms.Any(p => p.Id == platformId);
     }
 
     public bool SaveChanges()
