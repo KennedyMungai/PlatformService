@@ -53,7 +53,7 @@ public class PlatformsController : ControllerBase
         return NotFound();
     }
 
-    [HttpPost(Name = "Create New Platform")]
+    [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult<PlatformReadDto>> CreatePlatformAsync(PlatformCreateDto platformCreateDto)
     {
