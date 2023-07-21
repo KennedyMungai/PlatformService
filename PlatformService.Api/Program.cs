@@ -17,6 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(builder.
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
 builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
+builder.Services.AddGrpc();
 
 Console.WriteLine($" ---> Command Service Endpoint {builder.Configuration["CommandService"]}");
 
