@@ -8,3 +8,9 @@ public class EventProcessor : IEventProcessor
         throw new NotImplementedException();
     }
 }
+
+enum EventType
+{
+    PlatformPublished,
+    Undetermined
+}
