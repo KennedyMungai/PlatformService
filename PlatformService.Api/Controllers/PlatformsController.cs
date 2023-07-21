@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PlatformService.Api.AsyncDataServices;
 using PlatformService.Api.Data;
 using PlatformService.Api.Dtos;
 using PlatformService.Api.Models;
@@ -14,12 +15,14 @@ public class PlatformsController : ControllerBase
     private readonly IPlatformRepo _repository;
     private readonly IMapper _mapper;
     private readonly ICommandDataClient _commandDataClient;
+    private readonly IMessageBusClient _messageBusClient;
 
-    public PlatformsController(IPlatformRepo repository, IMapper mapper, ICommandDataClient commandDataClient)
+    public PlatformsController(IPlatformRepo repository, IMapper mapper, ICommandDataClient commandDataClient, IMessageBusClient messageBusClient)
     {
         _repository = repository;
         _mapper = mapper;
         _commandDataClient = commandDataClient;
+        _messageBusClient = messageBusClient;
     }
 
     [HttpGet(Name = "Get All PLatforms")]
