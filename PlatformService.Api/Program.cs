@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PlatformService.Api.AsyncDataServices;
 using PlatformService.Api.Data;
 using PlatformService.Api.SyncDataServices.Http;
 
@@ -15,6 +16,7 @@ builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(builder.Configuration.GetConnectionString("PlatformsConn"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("PlatformsConn"))));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
 
 Console.WriteLine($" ---> Command Service Endpoint {builder.Configuration["CommandService"]}");
 
