@@ -18,7 +18,7 @@ public class EventProcessor : IEventProcessor
 
     public void ProcessEvent(string message)
     {
-        throw new NotImplementedException();
+        var eventType = DetermineEvent(message);
     }
 
     private EventType DetermineEvent(string notificationMessage)
