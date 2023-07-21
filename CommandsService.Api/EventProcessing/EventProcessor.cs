@@ -19,6 +19,15 @@ public class EventProcessor : IEventProcessor
     public void ProcessEvent(string message)
     {
         var eventType = DetermineEvent(message);
+
+        switch (eventType)
+        {
+            case EventType.PlatformPublished:
+                // TODO Add the platform to the database
+                break;
+            default:
+                break;
+        }
     }
 
     private EventType DetermineEvent(string notificationMessage)
