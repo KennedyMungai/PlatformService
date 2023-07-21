@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PlatformService.Api.AsyncDataServices;
 using PlatformService.Api.Data;
+using PlatformService.Api.SyncDataServices.Grpc;
 using PlatformService.Api.SyncDataServices.Http;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,5 +41,7 @@ if (app.Environment.IsProduction())
 {
     PrepDb.PrepPopulation(app);
 }
+
+app.MapGrpcService<GrpcPlatformService>();
 
 app.Run();
